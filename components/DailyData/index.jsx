@@ -1,6 +1,6 @@
 import { LineChart } from "react-native-chart-kit";
 import { Dimensions, StyleSheet, View } from "react-native";
-import { NAV_BACKGROUND_COLOR } from "../constants/colors";
+import { NAV_BACKGROUND_COLOR } from "../../constants/colors";
 
 const { width } = Dimensions.get("window");
 
