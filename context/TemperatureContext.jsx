@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import * as Location from "expo-location";
-import { openWeatherMapApiKey } from "../constants/keys";
+import axios from "axios";
+import { openWeatherMapApiKey, openWeatherMapApiUrl } from "../constants/general";
 
 const TemperatureContext = createContext(null);
 
@@ -14,22 +15,16 @@ const TemperatureContextProvider = ({ children }) => {
 
   useEffect(() => {
     (async () => {
-      let { status } = await Location.requestForegroundPermissionsAsync();
+      const { status } = await Location.requestForegroundPermissionsAsync();
       if (status !== "granted") {
         alert("permission is required");
       } else {
-        let location = await Location.getCurrentPositionAsync({});
-        let Data = "Waiting..";
-        let Longitude_Latitude = null;
-        Data = JSON.stringify(location.coords);
-        Longitude_Latitude = JSON.parse(Data);
-
-
+        const location = await Location.getCurrentPositionAsync({});
+        const { latitude, longitude } = location.coords;
         // API call after getting location
-        const URL = `https://api.openweathermap.org/data/3.0/onecall?lat=${Longitude_Latitude["latitude"]}&lon=${Longitude_Latitude["longitude"]}&units=metric&appid=${openWeatherMapApiKey}`;
+        const URL = `${openWeatherMapApiUrl}/data/3.0/onecall?lat=${latitude}&lon=${longitude}&units=metric&appid=${openWeatherMapApiKey}`;
         try {
-          const res = await fetch(URL);
-          const data = await res.json();
+          const { data } = await axios.get(URL);
           setWeatherData(data);
         } catch (e) {
           setFetchError(true);
@@ -40,17 +35,22 @@ const TemperatureContextProvider = ({ children }) => {
 
   const getStateWeatherData = async(cityVal) => {
     try {
-      const URL=`https://api.openweathermap.org/data/2.5/weather?q=${cityVal}&units=metric&appid=${openWeatherMapApiKey}`;
-      const res = await fetch(URL);
-      const data = await res.json();
+      const URL = `${openWeatherMapApiUrl}/data/2.5/weather?q=${cityVal}&units=metric&appid=${openWeatherMapApiKey}`;
+      const { data } = await axios.get(URL);
       setStateWeatherData(data);
     } catch (e) {
       setFetchError(true);
     }
   }
 
-  const value = { tempMode, weatherData,
-    getStateWeatherData, StateWeatherData, FetchError };
+  const value = {
+    tempMode,
+    weatherData,
+    getStateWeatherData,
+    StateWeatherData,
+    FetchError
+  };
+
   return (
     <TemperatureContext.Provider value={value}>
       {children}
