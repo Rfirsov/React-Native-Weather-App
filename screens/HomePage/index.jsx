@@ -9,12 +9,12 @@ import styles from "./HomePage.style";
 
 const HomePage = () => {
   const date = new Date();
-  const Full_Date = date.toDateString();
+  const fullDate = date.toDateString();
 
   const { tempMode, weatherData } = useTemp();
 
   if (weatherData) {
-    const { temp, humidity, wind_speed, weather, pressure, dt } = weatherData.current;
+    const { temp, humidity, wind_speed: windSpeed, weather, pressure } = weatherData.current;
     const { daily } = weatherData;
     const date = new Date();
     const hour = date.getHours();
@@ -39,7 +39,7 @@ const HomePage = () => {
 
         {/* Present date */}
         <View style={styles.date}>
-          <Text style={styles.dateText}>{Full_Date}</Text>
+          <Text style={styles.dateText}>{fullDate}</Text>
         </View>
 
         {/* Current location */}
@@ -164,7 +164,7 @@ const HomePage = () => {
               color='rgba(256,256,256,0.9)'
             />
             <Text style={styles.otherDataValueText}>
-              {wind_speed} <Text style={styles.unitText}>km/h</Text>
+              {windSpeed} <Text style={styles.unitText}>km/h</Text>
             </Text>
             <Text style={styles.otherDataText}>Wind</Text>
           </View>

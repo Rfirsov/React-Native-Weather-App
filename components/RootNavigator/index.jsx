@@ -7,7 +7,7 @@ import SearchPage from "../../screens/SearchPage";
 import ErrorPage from "../../screens/ErrorPage";
 
 import { Feather } from "@expo/vector-icons";
-import { BACKGROUND_COLOR, ICON_COLOR, ICON_FOCUSED_COLOR, NAV_BACKGROUND_COLOR, NAV_BORDER_COLOR } from "../../constants/colors";
+import { BACKGROUND_COLOR, NAV_BACKGROUND_COLOR, NAV_BORDER_COLOR } from "../../constants/colors";
 import { useTemp } from "../../context/TemperatureContext";
 
 const Tab = createBottomTabNavigator();
@@ -50,8 +50,7 @@ const RootNavigator = () => {
         <Tab.Screen
           options={{
             tabBarShowLabel: false,
-            tabBarIcon: ({ color, focused }) => {
-              const c = focused ? ICON_FOCUSED_COLOR : ICON_COLOR;
+            tabBarIcon: ({ color }) => {
               return (
                 <View >
                   <Feather
@@ -88,8 +87,7 @@ const RootNavigator = () => {
         <Tab.Screen
           options={{
             tabBarShowLabel: false,
-            tabBarIcon: ({ color, size, focused }) => {
-              const c = focused ? ICON_FOCUSED_COLOR : ICON_COLOR;
+            tabBarIcon: ({ color }) => {
               return (
                 <View>
                   <Feather
