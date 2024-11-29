@@ -9,7 +9,6 @@ export const getCurrentLocationWeatherData = async () => {
   // API call after getting location
   const URL = `${openWeatherMapApiUrl}/data/3.0/onecall?lat=${latitude}&lon=${longitude}&units=metric&appid=${openWeatherMapApiKey}`;
   const { data } = await axios.get(URL);
-  console.log('first,', data);
   return data;
 }
 

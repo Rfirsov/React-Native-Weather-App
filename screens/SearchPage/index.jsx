@@ -8,9 +8,9 @@ import { currentHour } from "../../utils/dates";
 import styles from "./SearchPage.style";
 
 const SearchPage = () => {
-  const [cityVal, setCityVal] = useState('dnipro');
+  const [cityVal, setCityVal] = useState('Dnipro');
 
-  const { tempMode, StateWeatherData, getStateWeatherData } = useTemp();
+  const { tempMode, stateWeatherData, getStateWeatherData } = useTemp();
 
   useEffect(() => {
     getStateWeatherData(cityVal);
@@ -21,12 +21,12 @@ const SearchPage = () => {
   }
   const changeFun = (val) => {
     setCityVal(val);
-  } 
+  }
 
-  if (StateWeatherData) {
-    const { main } = StateWeatherData.weather[0];
-    const { temp, pressure, humidity } = StateWeatherData.main;
-    const { speed } = StateWeatherData.wind;
+  if (!!stateWeatherData) {
+    const { main } = stateWeatherData.weather[0];
+    const { temp, pressure, humidity } = stateWeatherData.main;
+    const { speed } = stateWeatherData.wind;
     
     return (
       <View style={styles.main}>
@@ -148,7 +148,7 @@ const SearchPage = () => {
               color='#3ddc84'
             />
           <Text style={styles.locationText}>
-            {StateWeatherData.name}
+            {stateWeatherData.name}
           </Text>
         </View>
 

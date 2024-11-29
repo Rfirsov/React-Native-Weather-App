@@ -9,8 +9,8 @@ export const useTemp = () => useContext(TemperatureContext);
 const TemperatureContextProvider = ({ children }) => {
   const [tempMode, setTempMode] = useState(false);
   const [weatherData, setWeatherData] = useState(null);
-  const [StateWeatherData, setStateWeatherData] = useState(null);
-  const [FetchError, setFetchError] = useState(false);
+  const [stateWeatherData, setStateWeatherData] = useState(null);
+  const [fetchError, setFetchError] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -41,8 +41,8 @@ const TemperatureContextProvider = ({ children }) => {
     tempMode,
     weatherData,
     getStateWeatherData,
-    StateWeatherData,
-    FetchError
+    stateWeatherData,
+    fetchError
   };
 
   return (
