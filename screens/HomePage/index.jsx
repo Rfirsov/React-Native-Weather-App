@@ -4,22 +4,17 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useTemp } from "../../context/TemperatureContext";
 import LoadingPage from "../LoadingPage";
 import DailyData from "../../components/DailyData";
+import { currentHour, week, fullDate } from "../../utils/dates";
 
 import styles from "./HomePage.style";
 
 const HomePage = () => {
-  const date = new Date();
-  const fullDate = date.toDateString();
-
   const { tempMode, weatherData } = useTemp();
 
   if (weatherData) {
     const { temp, humidity, wind_speed: windSpeed, weather, pressure } = weatherData.current;
     const { daily } = weatherData;
-    const date = new Date();
-    const hour = date.getHours();
     const { main } = weather[0];
-    const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
     const daysData = [];
     const tempData = [];
 
@@ -27,7 +22,7 @@ const HomePage = () => {
       daily.map((e, index) => {
         if (index >= 1) {
           const dd = new Date(e.dt * 1000).getUTCDay();
-          daysData.push(days[dd]);
+          daysData.push(week[dd]);
           tempData.push(e.temp["day"]);
         }
       });
@@ -75,13 +70,13 @@ const HomePage = () => {
           ) : null}
 
           {/* Drizzle weather */}
-          {main === "Drizzle" && hour < 19 ? (
+          {main === "Drizzle" && currentHour < 19 ? (
             <Image
               style={{ height: 160, width: 160 }}
               source={require('../../assets/weatherIcons/Drizzle.png')}
             />
           ) : null}
-          {main === "Drizzle" && hour >= 19 ? (
+          {main === "Drizzle" && currentHour >= 19 ? (
             <Image
               style={{ height: 160, width: 160 }}
               source={require('../../assets/weatherIcons/Night_Drizzle.png')}
@@ -89,13 +84,13 @@ const HomePage = () => {
           ) : null}
 
           {/* Mist weather */}
-          {main === "Mist" && hour < 19 ? (
+          {main === "Mist" && currentHour < 19 ? (
             <Image
               style={{ height: 130, width: 170 }}
               source={require('../../assets/weatherIcons/Mist.png')}
             />
           ) : null}
-          {main === "Mist" && hour >= 19 ? (
+          {main === "Mist" && currentHour >= 19 ? (
             <Image
               style={{ height: 150, width: 150 }}
               source={require('../../assets/weatherIcons/Night_Mist.png')}
@@ -103,13 +98,13 @@ const HomePage = () => {
           ) : null}
 
           {/* Cloudy weather */}
-          {main === "Clouds" && hour < 19 ? (
+          {main === "Clouds" && currentHour < 19 ? (
             <Image
               style={{ height: 130, width: 170 }}
               source={require('../../assets/weatherIcons/Cloudy.png')}
             />
           ) : null}
-          {main === "Clouds" && hour >= 19 ? (
+          {main === "Clouds" && currentHour >= 19 ? (
             <Image
               style={{ height: 160, width: 160 }}
               source={require('../../assets/weatherIcons/Night_Cloudy.png')}
@@ -117,13 +112,13 @@ const HomePage = () => {
           ) : null}
 
           {/* Clear weather */}
-          {main === "Clear" && hour < 19 ? (
+          {main === "Clear" && currentHour < 19 ? (
             <Image
               style={{ height: 160, width: 160 }}
               source={require('../../assets/weatherIcons/Sunny.png')}
             />
           ) : null}
-          {main === "Clear" && hour >= 19 ? (
+          {main === "Clear" && currentHour >= 19 ? (
             <Image
               style={{ height: 150, width: 160 }}
               source={require('../../assets/weatherIcons/Night_Clear.png')}

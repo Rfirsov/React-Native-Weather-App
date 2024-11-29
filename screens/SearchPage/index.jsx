@@ -3,6 +3,7 @@ import { Image, Text, TextInput, View, TouchableOpacity } from "react-native";
 import { Ionicons, MaterialIcons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { useTemp } from "../../context/TemperatureContext";
 import LoadingPage from "../LoadingPage";
+import { currentHour } from "../../utils/dates";
 
 import styles from "./SearchPage.style";
 
@@ -26,8 +27,6 @@ const SearchPage = () => {
     const { main } = StateWeatherData.weather[0];
     const { temp, pressure, humidity } = StateWeatherData.main;
     const { speed } = StateWeatherData.wind;
-    const date = new Date();
-    const hour = date.getHours();
     
     return (
       <View style={styles.main}>
@@ -72,13 +71,13 @@ const SearchPage = () => {
           ) : null}
 
           {/* Drizzle weather */}
-          {main === "Drizzle" && hour < 19 ? (
+          {main === "Drizzle" && currentHour < 19 ? (
             <Image
               style={{ height: 160, width: 160 }}
               source={require('../../assets/weatherIcons/Drizzle.png')}
             />
           ) : null}
-          {main === "Drizzle" && hour >= 19 ? (
+          {main === "Drizzle" && currentHour >= 19 ? (
             <Image
               style={{ height: 160, width: 160 }}
               source={require('../../assets/weatherIcons/Night_Drizzle.png')}
@@ -86,13 +85,13 @@ const SearchPage = () => {
           ) : null}
 
           {/* Mist weather */}
-          {main === "Mist" && hour < 19 ? (
+          {main === "Mist" && currentHour < 19 ? (
             <Image
               style={{ height: 130, width: 170 }}
               source={require('../../assets/weatherIcons/Mist.png')}
             />
           ) : null}
-          {main === "Mist" && hour >= 19 ? (
+          {main === "Mist" && currentHour >= 19 ? (
             <Image
               style={{ height: 150, width: 150 }}
               source={require('../../assets/weatherIcons/Night_Mist.png')}
@@ -100,13 +99,13 @@ const SearchPage = () => {
           ) : null}
 
           {/* Cloudy weather */}
-          {main === "Clouds" && hour < 19 ? (
+          {main === "Clouds" && currentHour < 19 ? (
             <Image
               style={{ height: 130, width: 170 }}
               source={require('../../assets/weatherIcons/Cloudy.png')}
             />
           ) : null}
-          {main === "Clouds" && hour >= 19 ? (
+          {main === "Clouds" && currentHour >= 19 ? (
             <Image
               style={{ height: 160, width: 160 }}
               source={require('../../assets/weatherIcons/Night_Cloudy.png')}
@@ -114,13 +113,13 @@ const SearchPage = () => {
           ) : null}
 
           {/* Clear weather */}
-          {main === "Clear" && hour < 19 ? (
+          {main === "Clear" && currentHour < 19 ? (
             <Image
               style={{ height: 160, width: 160 }}
               source={require('../../assets/weatherIcons/Sunny.png')}
             />
           ) : null}
-          {main === "Clear" && hour >= 19 ? (
+          {main === "Clear" && currentHour >= 19 ? (
             <Image
               style={{ height: 150, width: 160 }}
               source={require('../../assets/weatherIcons/Night_Clear.png')}
