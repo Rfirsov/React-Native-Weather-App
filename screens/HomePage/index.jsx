@@ -6,6 +6,7 @@ import LoadingPage from "../LoadingPage";
 import DailyData from "../../components/DailyData";
 import { currentHour, fullDate } from "../../utils/dates";
 import { getWeatherForecastData } from "../../utils/weatherForecast";
+import { PRIMARY_LIGHT_COLOR } from "../../constants/colors";
 import styles from "./HomePage.style";
 
 const HomePage = () => {
@@ -134,7 +135,7 @@ const HomePage = () => {
             <MaterialCommunityIcons
               name='water-outline'
               size={36}
-              color='#ffffff'
+              color={PRIMARY_LIGHT_COLOR}
             />
             <Text style={styles.otherDataValueText}>
               {humidity} <Text style={styles.unitText}>%</Text>
@@ -145,7 +146,7 @@ const HomePage = () => {
             <MaterialCommunityIcons
               name='weather-windy'
               size={36}
-              color='#ffffff'
+              color={PRIMARY_LIGHT_COLOR}
             />
             <Text style={styles.otherDataValueText}>
               {windSpeed} <Text style={styles.unitText}>km/h</Text>
@@ -156,7 +157,7 @@ const HomePage = () => {
             <MaterialCommunityIcons
               name='weather-pouring'
               size={36}
-              color='#ffffff'
+              color={PRIMARY_LIGHT_COLOR}
             />
             <Text style={styles.otherDataValueText}>
               {pressure} <Text style={styles.unitText}>hPa</Text>

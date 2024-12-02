@@ -6,7 +6,7 @@ import LoadingPage from "../LoadingPage";
 import { currentHour } from "../../utils/dates";
 
 import styles from "./SearchPage.style";
-import { PRIMARY_LIGHT_COLOR_2 } from "../../constants/colors";
+import { PRIMARY_LIGHT_COLOR, PRIMARY_LIGHT_COLOR_2 } from "../../constants/colors";
 
 const SearchPage = () => {
   const [cityVal, setCityVal] = useState('Dnipro');
@@ -42,7 +42,7 @@ const SearchPage = () => {
           onChangeText={changeCityHandler}
         />
         <TouchableOpacity onPress={submit} style={styles.searchBtn}>
-          <MaterialIcons name="search" size={24} color='#ffffff' />
+          <MaterialIcons name="search" size={24} color={PRIMARY_LIGHT_COLOR} />
         </TouchableOpacity>
       </View>
 
@@ -161,7 +161,7 @@ const SearchPage = () => {
           <MaterialCommunityIcons
             name='water-outline' 
             size={36}
-            color='#ffffff'
+            color={PRIMARY_LIGHT_COLOR}
           />
           <Text style={styles.otherDataValueText}>
             {humidity} <Text style={styles.unitText}>%</Text>
@@ -172,7 +172,7 @@ const SearchPage = () => {
           <MaterialCommunityIcons
             name='weather-windy'
             size={36}
-            color='#ffffff'
+            color={PRIMARY_LIGHT_COLOR}
           />
           <Text style={styles.otherDataValueText}>
             {speed} <Text style={styles.unitText}>km/h</Text>
@@ -183,7 +183,7 @@ const SearchPage = () => {
           <MaterialCommunityIcons
             name='weather-pouring'
             size={36}
-            color='#ffffff'
+            color={PRIMARY_LIGHT_COLOR}
           />
           <Text style={styles.otherDataValueText}>
             {pressure} <Text style={styles.unitText}>hPa</Text>
