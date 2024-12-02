@@ -35,13 +35,13 @@ const SearchPage = () => {
       <View style={styles.searchCity}>
         <TextInput style={styles.search}
           placeholder="Search Cities"
-          placeholderTextColor={"rgba(256,256,256,0.4)"}
+          placeholderTextColor={"rgba(255,255,255,0.6)"}
           keyboardType='web-search'
           value={cityVal}
           onChangeText={changeCityHandler}
         />
         <TouchableOpacity onPress={submit} style={styles.searchBtn}>
-          <MaterialIcons name="search" size={24} color="#fff" />
+          <MaterialIcons name="search" size={24} color='#ffffff' />
         </TouchableOpacity>
       </View>
 
@@ -160,7 +160,7 @@ const SearchPage = () => {
           <MaterialCommunityIcons
             name='water-outline' 
             size={36}
-            color='rgba(256,256,256,0.9)'
+            color='#ffffff'
           />
           <Text style={styles.otherDataValueText}>
             {humidity} <Text style={styles.unitText}>%</Text>
@@ -171,7 +171,7 @@ const SearchPage = () => {
           <MaterialCommunityIcons
             name='weather-windy'
             size={36}
-            color='rgba(256,256,256,0.9)'
+            color='#ffffff'
           />
           <Text style={styles.otherDataValueText}>
             {speed} <Text style={styles.unitText}>km/h</Text>
@@ -182,7 +182,7 @@ const SearchPage = () => {
           <MaterialCommunityIcons
             name='weather-pouring'
             size={36}
-            color='rgba(256,256,256,0.9)'
+            color='#ffffff'
           />
           <Text style={styles.otherDataValueText}>
             {pressure} <Text style={styles.unitText}>hPa</Text>

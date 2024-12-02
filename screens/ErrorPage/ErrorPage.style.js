@@ -1,12 +1,12 @@
 import { StyleSheet } from 'react-native';
-import { BACKGROUND_COLOR } from '../../constants/colors';
+import { PRIMARY_DARK_COLOR } from '../../constants/colors';
 
 const styles = StyleSheet.create({
   main: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: BACKGROUND_COLOR
+    backgroundColor: PRIMARY_DARK_COLOR
   },
   animation: {
     height: 250,

@@ -7,7 +7,7 @@ import SearchPage from "../../screens/SearchPage";
 import ErrorPage from "../../screens/ErrorPage";
 
 import { Feather } from "@expo/vector-icons";
-import { BACKGROUND_COLOR, NAV_BACKGROUND_COLOR, NAV_BORDER_COLOR } from "../../constants/colors";
+import { PRIMARY_DARK_COLOR, PRIMARY_DARK_COLOR_2, PRIMARY_DARK_COLOR_3, PRIMARY_LIGHT_COLOR } from "../../constants/colors";
 import { useTemp } from "../../context/TemperatureContext";
 
 const Tab = createBottomTabNavigator();
@@ -26,22 +26,22 @@ const RootNavigator = () => {
             right: "3%",
             borderRadius: 20,
             borderWidth: 2,
-            borderColor: NAV_BORDER_COLOR,
-            backgroundColor: NAV_BACKGROUND_COLOR,
+            borderColor: PRIMARY_DARK_COLOR_3,
+            backgroundColor: PRIMARY_DARK_COLOR_2,
             borderTopWidth: 2,
-            borderTopColor: NAV_BORDER_COLOR,
+            borderTopColor: PRIMARY_DARK_COLOR_3,
           },
         }}
         tabBar={(props) => <TabBar
           colorPalette={{
-            primary: NAV_BACKGROUND_COLOR,
+            primary: PRIMARY_DARK_COLOR_2,
             secondary: "#6c757d",
             success: "#198754",
             danger: "#c9379d",
             warning: "#e6a919",
             info: "#00bcd4",
-            light: "rgba(256,256,256,0.9);",
-            dark: BACKGROUND_COLOR,
+            light: PRIMARY_LIGHT_COLOR,
+            dark: PRIMARY_DARK_COLOR,
           }}
           maxWidth={320} height={85} darkMode={true} {...props}
         />}

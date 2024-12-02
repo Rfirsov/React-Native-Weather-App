@@ -1,12 +1,19 @@
 import { StyleSheet, Dimensions } from "react-native";
-import { BACKGROUND_COLOR, NAV_BACKGROUND_COLOR } from "../../constants/colors";
+import {
+  PRIMARY_DARK_COLOR,
+  PRIMARY_DARK_COLOR_2,
+  PRIMARY_LIGHT_COLOR,
+  PRIMARY_LIGHT_COLOR_2,
+  PRIMARY_LIGHT_COLOR_3,
+  PRIMARY_LIGHT_COLOR_4
+} from "../../constants/colors";
 
 const { width } = Dimensions.get("window");
 
 const styles = StyleSheet.create({
   main: {
     flex: 1,
-    backgroundColor: BACKGROUND_COLOR,
+    backgroundColor: PRIMARY_DARK_COLOR,
   },
   searchCity: {
     display: 'flex',
@@ -17,17 +24,17 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   search:{
-    backgroundColor: NAV_BACKGROUND_COLOR,
+    backgroundColor: PRIMARY_DARK_COLOR_2,
     padding: 10,
     flex: 1,
     borderRadius: 30,
-    color: "rgba(256,256,256,0.9)",
+    color: PRIMARY_LIGHT_COLOR,
     paddingLeft: 25
   },
   searchBtn: {
     height: 50,
     width: 50,
-    backgroundColor: NAV_BACKGROUND_COLOR,
+    backgroundColor: PRIMARY_DARK_COLOR_2,
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 50,
@@ -37,7 +44,7 @@ const styles = StyleSheet.create({
     marginLeft: "7%",
   },
   dateText: {
-    color: "rgba(256,256,256,0.63)",
+    color: PRIMARY_LIGHT_COLOR_2,
     fontSize: 12,
   },
   location: {
@@ -49,7 +56,7 @@ const styles = StyleSheet.create({
     marginBottom:50
   },
   locationText: {
-    color: "rgba(256,256,256,0.9)",
+    color: PRIMARY_LIGHT_COLOR,
     fontSize: 30,
     fontWeight: "normal",
     marginLeft: 4,
@@ -61,15 +68,15 @@ const styles = StyleSheet.create({
     marginVertical: 30,
   },
   tempText: {
-    color: "rgba(256,256,256,0.9)",
+    color: PRIMARY_LIGHT_COLOR,
     fontSize: 60,
     alignSelf: "center",
   },
   tempmodeText: {
-    color: "rgba(256,256,256,0.4)",
+    color: PRIMARY_LIGHT_COLOR_4,
   },
   weatherState: {
-    color: "rgba(256,256,256,0.55)",
+    color: PRIMARY_LIGHT_COLOR_3,
     fontSize: 16,
     alignSelf: "center",
     textTransform: "uppercase",
@@ -92,23 +99,23 @@ const styles = StyleSheet.create({
     alignItems: "center",
     height: "100%",
     width: "100%",
-    backgroundColor: NAV_BACKGROUND_COLOR,
+    backgroundColor: PRIMARY_DARK_COLOR_2,
     borderRadius: 25,
     marginHorizontal: 5,
   },
   otherDataValueText: {
     fontSize: 14,
-    color: "rgba(256,256,256,0.9)",
+    color: PRIMARY_LIGHT_COLOR,
   },
   otherDataText: {
     fontSize: 14,
-    color: "rgba(256,256,256,0.55)",
+    color: PRIMARY_LIGHT_COLOR_3,
     marginTop: 10,
     textTransform: "capitalize",
   },
   unitText: {
     fontSize: 11,
-    color: "rgba(256,256,256,0.55)",
+    color: PRIMARY_LIGHT_COLOR_3,
   },
 });
 

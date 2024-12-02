@@ -134,7 +134,7 @@ const HomePage = () => {
             <MaterialCommunityIcons
               name='water-outline'
               size={36}
-              color='rgba(256,256,256,0.9)'
+              color='#ffffff'
             />
             <Text style={styles.otherDataValueText}>
               {humidity} <Text style={styles.unitText}>%</Text>
@@ -145,7 +145,7 @@ const HomePage = () => {
             <MaterialCommunityIcons
               name='weather-windy'
               size={36}
-              color='rgba(256,256,256,0.9)'
+              color='#ffffff'
             />
             <Text style={styles.otherDataValueText}>
               {windSpeed} <Text style={styles.unitText}>km/h</Text>
@@ -156,7 +156,7 @@ const HomePage = () => {
             <MaterialCommunityIcons
               name='weather-pouring'
               size={36}
-              color='rgba(256,256,256,0.9)'
+              color='#ffffff'
             />
             <Text style={styles.otherDataValueText}>
               {pressure} <Text style={styles.unitText}>hPa</Text>
