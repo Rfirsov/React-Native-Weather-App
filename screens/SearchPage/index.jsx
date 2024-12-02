@@ -6,6 +6,7 @@ import LoadingPage from "../LoadingPage";
 import { currentHour } from "../../utils/dates";
 
 import styles from "./SearchPage.style";
+import { PRIMARY_LIGHT_COLOR_2 } from "../../constants/colors";
 
 const SearchPage = () => {
   const [cityVal, setCityVal] = useState('Dnipro');
@@ -35,7 +36,7 @@ const SearchPage = () => {
       <View style={styles.searchCity}>
         <TextInput style={styles.search}
           placeholder="Search Cities"
-          placeholderTextColor={"rgba(255,255,255,0.6)"}
+          placeholderTextColor={PRIMARY_LIGHT_COLOR_2}
           keyboardType='web-search'
           value={cityVal}
           onChangeText={changeCityHandler}
