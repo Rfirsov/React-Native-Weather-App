@@ -4,30 +4,19 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useTemp } from "../../context/TemperatureContext";
 import LoadingPage from "../LoadingPage";
 import DailyData from "../../components/DailyData";
-import { currentHour, week, fullDate } from "../../utils/dates";
-
+import { currentHour, fullDate } from "../../utils/dates";
+import { getWeatherForecastData } from "../../utils/weatherForecast";
 import styles from "./HomePage.style";
 
 const HomePage = () => {
   const { tempMode, weatherData } = useTemp();
 
-  if (weatherData) {
-    const { temp, humidity, wind_speed: windSpeed, weather, pressure } = weatherData.current;
-    const { daily } = weatherData;
-    const { main } = weather[0];
-    const daysData = [];
-    const tempData = [];
+  if (!weatherData) return <LoadingPage />;
 
-    {
-      daily.map((e, index) => {
-        if (index >= 1) {
-          const dd = new Date(e.dt * 1000).getUTCDay();
-          daysData.push(week[dd]);
-          tempData.push(e.temp["day"]);
-        }
-      });
-    }
-
+  const { daysData, tempData } = getWeatherForecastData(weatherData.daily);
+  const { temp, humidity, wind_speed: windSpeed, weather, pressure } = weatherData.current;
+  const { main } = weather[0];
+  
     return (
       <View style={styles.main}>
         <StatusBar style='inverted' />
@@ -182,9 +171,6 @@ const HomePage = () => {
         </View>
       </View>
     );
-  } else {
-    return <LoadingPage />;
-  }
 };
 
 export default HomePage;
