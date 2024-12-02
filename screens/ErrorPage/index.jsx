@@ -5,9 +5,11 @@ import styles from './ErrorPage.style';
 const ErrorPage = () => {
   return (
     <View style={styles.main}>
-      <LottieView autoPlay
-        loop source={require('../../assets/animations/ErrorAnimation.json')} 
-        style={{ height: 250, width: 250 }}
+      <LottieView
+        autoPlay
+        loop
+        source={require('../../assets/animations/ErrorAnimation.json')} 
+        {...styles.animation}
       />
     </View>
   )

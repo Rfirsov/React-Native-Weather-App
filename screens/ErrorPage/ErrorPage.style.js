@@ -8,8 +8,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: BACKGROUND_COLOR
   },
-  text: {
-    color: '#fff'
+  animation: {
+    height: 250,
+    width: 250
   }
 });
 
