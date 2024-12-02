@@ -86,27 +86,7 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     marginBottom:40
   },
-  Humidity: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    height: "100%",
-    width: "100%",
-    backgroundColor: NAV_BACKGROUND_COLOR,
-    borderRadius: 25,
-    marginHorizontal: 5,
-  },
-  Pressure: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    height: "100%",
-    width: "100%",
-    backgroundColor: NAV_BACKGROUND_COLOR,
-    borderRadius: 25,
-    marginHorizontal: 5,
-  },
-  WindSpeed: {
+  meteorology: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
@@ -129,12 +109,6 @@ const styles = StyleSheet.create({
   unitText: {
     fontSize: 11,
     color: "rgba(256,256,256,0.55)",
-  },
-  DailyData: {
-    flex: 1,
-    width: width - 30,
-    alignSelf: "center",
-    borderRadius: 30,
   },
 });
 

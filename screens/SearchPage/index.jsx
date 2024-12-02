@@ -156,7 +156,7 @@ const SearchPage = () => {
 
       {/* Other weather data */}
       <View style={styles.otherData}>
-        <View style={styles.Humidity}>
+        <View style={styles.meteorology}>
           <MaterialCommunityIcons
             name='water-outline' 
             size={36}
@@ -167,7 +167,7 @@ const SearchPage = () => {
           </Text>
           <Text style={styles.otherDataText}>Humidity</Text>
         </View>
-        <View style={styles.Pressure}>
+        <View style={styles.meteorology}>
           <MaterialCommunityIcons
             name='weather-windy'
             size={36}
@@ -178,7 +178,7 @@ const SearchPage = () => {
           </Text>
           <Text style={styles.otherDataText}>Wind</Text>
         </View>
-        <View style={styles.WindSpeed}>
+        <View style={styles.meteorology}>
           <MaterialCommunityIcons
             name='weather-pouring'
             size={36}

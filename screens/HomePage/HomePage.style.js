@@ -59,27 +59,7 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     borderRadius: 30,
   },
-  Humidity: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    height: "100%",
-    width: "100%",
-    backgroundColor: NAV_BACKGROUND_COLOR,
-    borderRadius: 25,
-    marginHorizontal: 5,
-  },
-  Pressure: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    height: "100%",
-    width: "100%",
-    backgroundColor: NAV_BACKGROUND_COLOR,
-    borderRadius: 25,
-    marginHorizontal: 5,
-  },
-  WindSpeed: {
+  meteorology: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
