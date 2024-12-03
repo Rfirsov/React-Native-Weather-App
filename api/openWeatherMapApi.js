@@ -2,6 +2,15 @@ import * as Location from "expo-location";
 import axios from "axios";
 import { openWeatherMapApiKey, openWeatherMapApiUrl } from "../constants/general";
 
+const baseApi = axios.create({
+  baseURL: openWeatherMapApiUrl,
+  params: {
+    appid: openWeatherMapApiKey,
+    units: "metric"
+  }
+  
+});
+
 export const getCurrentLocationWeatherApi = async () => {
   try {
     const { status } = await Location.requestForegroundPermissionsAsync();
@@ -9,8 +18,8 @@ export const getCurrentLocationWeatherApi = async () => {
       const location = await Location.getCurrentPositionAsync({});
       const { latitude, longitude } = location.coords;
       // API call after getting location
-      const URL = `${openWeatherMapApiUrl}/data/3.0/onecall?lat=${latitude}&lon=${longitude}&units=metric&appid=${openWeatherMapApiKey}`;
-      const { data } = await axios.get(URL);
+      const URL = `/data/3.0/onecall?lat=${latitude}&lon=${longitude}`;
+      const { data } = await baseApi.get(URL);
       return data;
     } else {
       alert("permission is required");
@@ -22,8 +31,8 @@ export const getCurrentLocationWeatherApi = async () => {
 
 export const getSearchedCityWeatherApi = async (cityVal) => {
   try {
-    const URL = `${openWeatherMapApiUrl}/data/2.5/weather?q=${cityVal}&units=metric&appid=${openWeatherMapApiKey}`;
-    const { data } = await axios.get(URL);
+    const URL = `/data/2.5/weather?q=${cityVal}`;
+    const { data } = await baseApi.get(URL);
     return data;
   } catch {
     throw new Error("City not found");
