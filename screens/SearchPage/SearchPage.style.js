@@ -15,31 +15,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: PRIMARY_DARK_COLOR,
   },
-  searchCity: {
-    display: 'flex',
-    flexDirection: 'row',
-    marginTop: "15%",
-    marginHorizontal: "4%",
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  search:{
-    backgroundColor: PRIMARY_DARK_COLOR_2,
-    padding: 10,
-    flex: 1,
-    borderRadius: 30,
-    color: PRIMARY_LIGHT_COLOR,
-    paddingLeft: 25
-  },
-  searchBtn: {
-    height: 50,
-    width: 50,
-    backgroundColor: PRIMARY_DARK_COLOR_2,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 50,
-    marginLeft: 10
-  },
   date: {
     marginLeft: "7%",
   },

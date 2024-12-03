@@ -1,29 +1,21 @@
-import {useState, useEffect } from "react";
-import { Image, Text, TextInput, View, TouchableOpacity } from "react-native";
-import { Ionicons, MaterialIcons, MaterialCommunityIcons } from "@expo/vector-icons";
+import { useState, useEffect } from "react";
+import { Image, Text, View } from "react-native";
+import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { useTemp } from "../../context/TemperatureContext";
+import SearchCity from "../../components/SearchCity";
 import LoadingPage from "../LoadingPage";
 import { currentHour } from "../../utils/dates";
 
 import styles from "./SearchPage.style";
-import { PRIMARY_LIGHT_COLOR, PRIMARY_LIGHT_COLOR_2 } from "../../constants/colors";
+import { PRIMARY_LIGHT_COLOR } from "../../constants/colors";
 
 const SearchPage = () => {
   const [cityVal, setCityVal] = useState('Dnipro');
-
-  const { selectedStateWeatherData, getStateWeatherData } = useTemp();
+  const { getStateWeatherData, selectedStateWeatherData } = useTemp();
 
   useEffect(() => {
     getStateWeatherData(cityVal);
   },[])
-
-  const submitHandler = () => {
-    getStateWeatherData(cityVal);
-    setCityVal('');
-  }
-  const changeCityHandler = (val) => {
-    setCityVal(val);
-  }
 
   if (!selectedStateWeatherData) return <LoadingPage />;
 
@@ -33,18 +25,7 @@ const SearchPage = () => {
 
   return (
     <View style={styles.main}>
-      <View style={styles.searchCity}>
-        <TextInput style={styles.search}
-          placeholder="Search Cities"
-          placeholderTextColor={PRIMARY_LIGHT_COLOR_2}
-          keyboardType='web-search'
-          value={cityVal}
-          onChangeText={changeCityHandler}
-        />
-        <TouchableOpacity onPress={submitHandler} style={styles.searchBtn}>
-          <MaterialIcons name="search" size={24} color={PRIMARY_LIGHT_COLOR} />
-        </TouchableOpacity>
-      </View>
+      <SearchCity cityVal={cityVal} setCityVal={setCityVal} />
 
       {/* Weather icon */}
       <View style={[styles.weatherIconView]}>
