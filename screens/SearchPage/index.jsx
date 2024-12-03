@@ -134,7 +134,7 @@ const SearchPage = () => {
       <View>
         <Text style={styles.tempText}>
           {parseInt(temp)}
-          <Text style={styles.tempmodeText}>{tempMode ? "°F" : "°C"}</Text>
+          <Text style={styles.tempmodeText}>{'\u2103'}</Text>
         </Text>
       </View>
 

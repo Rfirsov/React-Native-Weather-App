@@ -10,7 +10,7 @@ import { PRIMARY_LIGHT_COLOR } from "../../constants/colors";
 import styles from "./HomePage.style";
 
 const HomePage = () => {
-  const { tempMode, weatherData } = useTemp();
+  const { weatherData } = useTemp();
 
   if (!weatherData) return <LoadingPage />;
 
@@ -120,7 +120,7 @@ const HomePage = () => {
         <View>
           <Text style={styles.tempText}>
             {parseInt(temp)}
-            <Text style={styles.tempmodeText}>{tempMode ? "°F" : "°C"}</Text>
+            <Text style={styles.tempmodeText}>{'\u2103'}</Text>
           </Text>
         </View>
 

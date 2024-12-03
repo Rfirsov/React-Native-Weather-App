@@ -6,7 +6,6 @@ const TemperatureContext = createContext(null);
 export const useTemp = () => useContext(TemperatureContext);
 
 const TemperatureContextProvider = ({ children }) => {
-  const [tempMode, setTempMode] = useState(false);
   const [weatherData, setWeatherData] = useState(null);
   const [selectedStateWeatherData, setSelectedStateWeatherData] = useState(null);
   const [fetchError, setFetchError] = useState(false);
@@ -32,7 +31,6 @@ const TemperatureContextProvider = ({ children }) => {
   }
 
   const value = {
-    tempMode,
     weatherData,
     getStateWeatherData,
     selectedStateWeatherData,
