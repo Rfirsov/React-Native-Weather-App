@@ -11,7 +11,7 @@ import { PRIMARY_LIGHT_COLOR, PRIMARY_LIGHT_COLOR_2 } from "../../constants/colo
 const SearchPage = () => {
   const [cityVal, setCityVal] = useState('Dnipro');
 
-  const { tempMode, selectedStateWeatherData, getStateWeatherData } = useTemp();
+  const { selectedStateWeatherData, getStateWeatherData } = useTemp();
 
   useEffect(() => {
     getStateWeatherData(cityVal);
@@ -30,7 +30,7 @@ const SearchPage = () => {
   const { main } = selectedStateWeatherData.weather[0];
   const { temp, pressure, humidity } = selectedStateWeatherData.main;
   const { speed } = selectedStateWeatherData.wind;
-    
+
   return (
     <View style={styles.main}>
       <View style={styles.searchCity}>

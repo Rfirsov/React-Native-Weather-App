@@ -8,15 +8,13 @@ const baseApi = axios.create({
     appid: openWeatherMapApiKey,
     units: "metric"
   }
-  
 });
 
 export const getCurrentLocationWeatherApi = async () => {
   try {
     const { status } = await Location.requestForegroundPermissionsAsync();
     if (status === 'granted') {
-      const location = await Location.getCurrentPositionAsync({});
-      const { latitude, longitude } = location.coords;
+      const { coords: { latitude, longitude }} = await Location.getCurrentPositionAsync({});
       // API call after getting location
       const URL = `/data/3.0/onecall?lat=${latitude}&lon=${longitude}`;
       const { data } = await baseApi.get(URL);
