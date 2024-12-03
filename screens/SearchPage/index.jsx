@@ -17,7 +17,7 @@ const SearchPage = () => {
     getStateWeatherData(cityVal);
   },[])
 
-  const submit = () => {
+  const submitHandler = () => {
     getStateWeatherData(cityVal);
     setCityVal('');
   }
@@ -41,7 +41,7 @@ const SearchPage = () => {
           value={cityVal}
           onChangeText={changeCityHandler}
         />
-        <TouchableOpacity onPress={submit} style={styles.searchBtn}>
+        <TouchableOpacity onPress={submitHandler} style={styles.searchBtn}>
           <MaterialIcons name="search" size={24} color={PRIMARY_LIGHT_COLOR} />
         </TouchableOpacity>
       </View>
