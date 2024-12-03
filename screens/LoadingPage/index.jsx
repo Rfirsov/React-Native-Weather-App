@@ -6,8 +6,8 @@ const LoadingPage = () => {
   return (
     <View style={styles.main}>
       <LottieView autoPlay
-        loop source={require('../../assets/animations/Loading.json')} 
-        style={{ height: 220, width: 220 }}
+        loop source={require('../../assets/animations/Loading.json')}
+        {...styles.animation}
       />
     </View>
   )
