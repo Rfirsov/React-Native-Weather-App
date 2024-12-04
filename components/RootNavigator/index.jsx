@@ -4,15 +4,12 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { ColorfulTabBar as TabBar } from 'react-navigation-tabbar-collection';
 import HomePage from "../../screens/HomePage";
 import SearchPage from "../../screens/SearchPage";
-import ErrorPage from "../../screens/ErrorPage";
 
 import { Feather } from "@expo/vector-icons";
 import { PRIMARY_DARK_COLOR, PRIMARY_DARK_COLOR_2, PRIMARY_DARK_COLOR_3, PRIMARY_LIGHT_COLOR } from "../../constants/colors";
-import { useTemp } from "../../context/TemperatureContext";
 
 const Tab = createBottomTabNavigator();
 const RootNavigator = () => {
-  const { FetchError } = useTemp();
   return (
     <NavigationContainer>
       <Tab.Navigator
@@ -46,26 +43,6 @@ const RootNavigator = () => {
           maxWidth={320} height={85} darkMode={true} {...props}
         />}
       >
-      {FetchError ?
-        <Tab.Screen
-          options={{
-            tabBarShowLabel: false,
-            tabBarIcon: ({ color }) => {
-              return (
-                <View >
-                  <Feather
-                    name='home'
-                    size={24}
-                    color={color}
-                  />
-                </View>
-              );
-            },
-          }}
-          name='Home'
-          component={ErrorPage}
-        />
-        :
         <Tab.Screen
           options={{
             tabBarShowLabel: false,
@@ -83,7 +60,7 @@ const RootNavigator = () => {
           }}
           name='Home'
           component={HomePage}
-        />}
+        />
         <Tab.Screen
           options={{
             tabBarShowLabel: false,
