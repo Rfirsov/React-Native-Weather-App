@@ -1,19 +1,19 @@
 import { TextInput, View, TouchableOpacity } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
-import { useTemp } from "../../context/TemperatureContext";
-
-import styles from "./SearchCity.style";
 import { PRIMARY_LIGHT_COLOR, PRIMARY_LIGHT_COLOR_2 } from "../../constants/colors";
+import useStateCity from "../../hooks/useStateCity";
+import styles from "./SearchCity.style";
 
-const SearchCity = ({ cityVal, setCityVal }) => {
-  const { getStateWeatherData } = useTemp();
+const SearchCity = ({ getStateWeatherData }) => {
+  const { city, setCity } = useStateCity();
 
   const submitHandler = () => {
-    getStateWeatherData(cityVal);
-    setCityVal('');
+    getStateWeatherData(city);
+    setCity('');
   }
+
   const changeCityHandler = (val) => {
-    setCityVal(val);
+    setCity(val);
   }
 
   return (
@@ -22,7 +22,7 @@ const SearchCity = ({ cityVal, setCityVal }) => {
         placeholder="Search Cities"
         placeholderTextColor={PRIMARY_LIGHT_COLOR_2}
         keyboardType='web-search'
-        value={cityVal}
+        value={city}
         onChangeText={changeCityHandler}
       />
       <TouchableOpacity onPress={submitHandler} style={styles.searchBtn}>

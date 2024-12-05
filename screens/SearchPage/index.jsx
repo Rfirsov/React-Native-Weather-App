@@ -1,23 +1,17 @@
-import { useState, useEffect } from "react";
 import { Text, View } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import { useTemp } from "../../context/TemperatureContext";
 import SearchCity from "../../components/SearchCity";
 import Temperature from '../../components/Temperature';
 import WeatherIconView from "../../components/WeatherIconView";
 import LoadingPage from "../LoadingPage";
 import WeatherCondition from "../../components/WeatherCondition";
 import MeteorologyData from "../../components/MeteorologyData";
+import useFetchSelectedLocationWeatherData from "../../hooks/useFetchSelectedLocationWeatherData";
 
 import styles from "./SearchPage.style";
 
 const SearchPage = () => {
-  const [cityVal, setCityVal] = useState('Dnipro');
-  const { getStateWeatherData, selectedStateWeatherData } = useTemp();
-
-  useEffect(() => {
-    getStateWeatherData(cityVal);
-  },[])
+  const { selectedStateWeatherData, getStateWeatherData } = useFetchSelectedLocationWeatherData();
 
   if (!selectedStateWeatherData) return <LoadingPage />;
 
@@ -27,12 +21,11 @@ const SearchPage = () => {
 
   return (
     <View style={styles.main}>
-      <SearchCity cityVal={cityVal} setCityVal={setCityVal} />
+      <SearchCity getStateWeatherData={getStateWeatherData} />
       <WeatherIconView main={main} />
       <Temperature temp={temp} />
       <WeatherCondition main={main} />
 
-      {/* Current location */}
       <View style={styles.location}>
         <Ionicons
             name="location-outline"

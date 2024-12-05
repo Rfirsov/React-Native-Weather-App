@@ -8,12 +8,12 @@ import Temperature from "../../components/Temperature";
 import WeatherIconView from "../../components/WeatherIconView";
 import { fullDate } from "../../utils/dates";
 import { getWeatherForecastData } from "../../utils/weatherForecast";
-import { useTemp } from "../../context/TemperatureContext";
+import useFetchCurrentLocationWeatherData from "../../hooks/useFetchCurrentLocationWeatherData";
 
 import styles from "./HomePage.style";
 
 const HomePage = () => {
-  const { weatherData } = useTemp();
+  const { weatherData } = useFetchCurrentLocationWeatherData();
 
   if (!weatherData) return <LoadingPage />;
 

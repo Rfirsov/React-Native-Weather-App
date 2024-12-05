@@ -10,14 +10,14 @@ const baseApi = axios.create({
   }
 });
 
-export const getCurrentLocationWeatherApi = async () => {
+export const getCurrentLocationWeatherAsync = async (signal) => {
   try {
     const { status } = await Location.requestForegroundPermissionsAsync();
     if (status === 'granted') {
-      const { coords: { latitude, longitude }} = await Location.getCurrentPositionAsync({});
+      const { coords: { latitude, longitude } } = await Location.getCurrentPositionAsync({});
       // API call after getting location
       const URL = `/data/3.0/onecall?lat=${latitude}&lon=${longitude}`;
-      const { data } = await baseApi.get(URL);
+      const { data } = await baseApi.get(URL, { signal });
       return data;
     } else {
       alert("permission is required");
@@ -27,12 +27,12 @@ export const getCurrentLocationWeatherApi = async () => {
   }
 }
 
-export const getSearchedCityWeatherApi = async (cityVal) => {
+export const getSearchedCityWeatherAsync = async (cityVal, signal) => {
   try {
     const URL = `/data/2.5/weather?q=${cityVal}`;
-    const { data } = await baseApi.get(URL);
+    const { data } = await baseApi.get(URL, { signal });
     return data;
-  } catch {
+  } catch (error) {
     throw new Error("City not found");
   }
 }

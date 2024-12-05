@@ -1,12 +1,10 @@
-import RootNavigator
-  from "./components/RootNavigator";
-import TemperatureContextProvider
-  from "./context/TemperatureContext";
+import { StrictMode } from "react";
+import RootNavigator from "./components/RootNavigator";
 
 export default function App() {
   return (
-    <TemperatureContextProvider>
+    <StrictMode>
       <RootNavigator />
-    </TemperatureContextProvider>
+    </StrictMode>
   );
 };
