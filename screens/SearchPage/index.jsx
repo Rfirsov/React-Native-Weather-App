@@ -15,14 +15,17 @@ const SearchPage = () => {
 
   if (!selectedStateWeatherData) return <LoadingPage />;
 
+  const { dt: dayTime, sys: { sunrise, sunset } } = selectedStateWeatherData;
   const { main } = selectedStateWeatherData.weather[0];
   const { temp, pressure, humidity } = selectedStateWeatherData.main;
   const { speed } = selectedStateWeatherData.wind;
 
+  const isDayTime = dayTime >= sunrise && dayTime <= sunset;
+
   return (
     <View style={styles.main}>
       <SearchCity getStateWeatherData={getStateWeatherData} />
-      <WeatherIconView main={main} />
+      <WeatherIconView main={main} isDayTime={isDayTime} />
       <Temperature temp={temp} />
       <WeatherCondition main={main} />
 

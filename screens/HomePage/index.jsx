@@ -18,8 +18,19 @@ const HomePage = () => {
   if (!weatherData) return <LoadingPage />;
 
   const { daysData, tempData } = getWeatherForecastData(weatherData.daily);
-  const { temp, humidity, wind_speed: windSpeed, weather, pressure } = weatherData.current;
+  const {
+    temp,
+    humidity,
+    wind_speed: windSpeed,
+    weather,
+    pressure,
+    dt: dayTime,
+    sunrise,
+    sunset
+  } = weatherData.current;
   const { main } = weather[0];
+
+  const isDayTime = dayTime >= sunrise && dayTime <= sunset;
   
     return (
       <View style={styles.main}>
@@ -35,7 +46,7 @@ const HomePage = () => {
           <Text style={styles.locationText}>Today</Text>
         </View>
 
-        <WeatherIconView main={main} />
+        <WeatherIconView main={main} isDayTime={isDayTime} />
         <Temperature temp={temp} />
         <WeatherCondition main={main} />
         <MeteorologyData humidity={humidity} speed={windSpeed} pressure={pressure} />
