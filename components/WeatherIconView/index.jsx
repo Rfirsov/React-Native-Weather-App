@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { View } from "react-native";
 import WeatherIcons from "../../components/WeatherIcons";
 import { currentHour } from "../../utils/dates";
@@ -29,4 +30,4 @@ const WeatherIconView = ({ main }) => {
   );
 };
 
-export default WeatherIconView;
+export default memo(WeatherIconView);

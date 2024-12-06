@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { getSearchedCityWeatherAsync } from "../api/openWeatherMapApi";
 import useStateCity from './useStateCity';
 
@@ -6,7 +6,7 @@ const useFetchSelectedLocationWeatherData = () => {
   const { city } = useStateCity();
   const [selectedStateWeatherData, setSelectedStateWeatherData] = useState(null);
 
-  const getStateWeatherData = async (cityVal, signal) => {
+  const getStateWeatherData = useCallback(async (cityVal, signal) => {
     try {
       const data = await getSearchedCityWeatherAsync(cityVal, signal);
       setSelectedStateWeatherData(data);
@@ -15,7 +15,7 @@ const useFetchSelectedLocationWeatherData = () => {
         console.error('Request canceled', e.message);
       }
     }
-  };
+  }, []);
 
   useEffect(() => {
     const controller = new AbortController();
